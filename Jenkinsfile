@@ -6,9 +6,7 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
     }
-    environment { 
-        Deploy_To = 'dev'
-    }    
+    
     stages {
         stage('init') { 
             steps {
