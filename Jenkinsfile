@@ -8,7 +8,7 @@ pipeline {
     }
     
     stages {
-        stage('init') { 
+        stage('Init') { 
             steps {
                 sh """
                  cd 01-vpc
