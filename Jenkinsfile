@@ -7,40 +7,47 @@ pipeline {
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
-    parameters {
-        choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
-    }
+    parameters{
+        choice(name: 'action' , choices: ['apply', 'destroy'], description: 'Pick something') 
+    }  
     stages {
         stage('Init') {
             steps {
-               sh """
-                cd 01-vpc
-                terraform init -reconfigure
-               """
+                sh """
+                  ls -ltr
+                  cd 01-vpc
+                  terraform init -reconfigure
+                  """
             }
         }
+    }
         stage('Plan') {
-            when {
+            when{
                 expression{
-                    params.action == 'Apply'
+                    params.action == 'apply'
                 }
             }
             steps {
                 sh """
-                cd 01-vpc
-                terraform plan
-                """
+                    cd 01-vpc
+                    terraform plan
+                    """
             }
         }
         stage('Deploy') {
-            when {
+             when{
                 expression{
-                    params.action == 'Apply'
+                    params.action == 'apply'
                 }
             }
             input {
                 message "Should we continue?"
-                ok "Yes, we should."
+                ok "Yes, we should"
+            }
+            when{
+                expression{
+                    params.action == 'apply'
+                }
             }
             steps {
                 sh """
@@ -49,13 +56,13 @@ pipeline {
                 """
             }
         }
-
-        stage('Destroy') {
+    
+    stage('Destroy') {
             when {
                 expression{
                     params.action == 'Destroy'
                 }
-            }
+            
             steps {
                 sh """
                 cd 01-vpc
@@ -63,7 +70,7 @@ pipeline {
                 """
             }
         }
-    }
+    }    
     post { 
         always { 
             echo 'I will always say Hello again!'
