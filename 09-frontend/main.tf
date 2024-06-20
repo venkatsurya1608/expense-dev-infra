@@ -53,7 +53,7 @@ resource "null_resource" "frontend" {
         host     = module.frontend.private_ip
     }
 
-    provisioner "file" {
+     provisioner "file" {
         source      = "${var.common_tags.Component}.sh"
         destination = "/tmp/${var.common_tags.Component}.sh"
     }
