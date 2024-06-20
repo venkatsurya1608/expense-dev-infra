@@ -7,7 +7,7 @@ terraform {
   }
     backend "s3" {    
         bucket = "venkatdevops-remote-state"    
-        key    = "terraform-expense-dev-infra-sg"  #everytime will change key   
+        key    = "terraform-expense-sg-infra"  #everytime will change key   
         region = "us-east-1" 
         dynamodb_table = "venkatdevops-locking" 
     }
