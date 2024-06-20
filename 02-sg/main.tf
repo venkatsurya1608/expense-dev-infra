@@ -245,6 +245,8 @@ resource "aws_security_group_rule" "frontend_default_vpc" {
 #   security_group_id = module.frontend.sg_id
 # }
 
+
+
 # # db is accepting connection from  backend 
 # resource "aws_security_group_rule" "db_backend" {    # terraform sg rule (db backend connection nunchi accept chesthundi)
 #   type              = "ingress"
