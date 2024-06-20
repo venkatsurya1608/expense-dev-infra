@@ -1,5 +1,5 @@
 module "db" {
-  source = "../../terraform-expense-securitygroup"
+  source = "../../terraform-expense-securitygroup1"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for DB MySQL Instances"
@@ -8,7 +8,7 @@ module "db" {
   sg_name = "db"
 }
 module "backend" {
-  source = "../../terraform-expense-securitygroup"
+  source = "../../terraform-expense-securitygroup1"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for DB backend Instances"
@@ -18,7 +18,7 @@ module "backend" {
 }
 
 module "frontend" {
-  source = "../../terraform-expense-securitygroup"
+  source = "../../terraform-expense-securitygroup1"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for DB frontend Instances"
@@ -28,7 +28,7 @@ module "frontend" {
 }
 
 module "bastion" {
-  source = "../../terraform-expense-securitygroup"
+  source = "../../terraform-expense-securitygroup1"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for DB bastion Instances"
@@ -38,7 +38,7 @@ module "bastion" {
 }
 
 module "app_alb" {
-  source = "../../terraform-expense-securitygroup"
+  source = "../../terraform-expense-securitygroup1"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for app alb Instances"
@@ -49,7 +49,7 @@ module "app_alb" {
 
 
 module "vpn" {
-  source = "../../terraform-expense-securitygroup"
+  source = "../../terraform-expense-securitygroup1"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for VPN Instances"
@@ -61,7 +61,7 @@ module "vpn" {
 }
 
 module "web_alb" {
-  source = "../../terraform-expense-securitygroup"
+  source = "../../terraform-expense-securitygroup1"
   project_name = var.project_name
   environment = var.environment
   sg_description = "SG for web alb Instances"
