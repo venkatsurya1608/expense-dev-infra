@@ -110,10 +110,10 @@ resource "aws_lb_target_group" "frontend" {
 resource "aws_launch_template" "frontend" {
   name = "${var.project_name}-${var.environment}-${var.common_tags.Component}"
 
-  image_id = data.aws_ami.ami_info.id
+  image_id = aws_ami_from_instance.frontend.id
 
   instance_initiated_shutdown_behavior = "terminate"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   update_default_version = true          # sets the latest version to default  vasthundi
   vpc_security_group_ids = [data.aws_ssm_parameter.frontend_sg_id.value]
 
